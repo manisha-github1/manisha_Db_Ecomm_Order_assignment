@@ -197,20 +197,9 @@ inner join product on pd.pro_id = product.pro_id;
 select cus_name as CUSTOMER_NAME , cus_gender as CUSTOMER_GENDER from customer 
 where cus_name like 'A%' or cus_name like '%A';
 
-/* 9) Display the total order amount of the male customers.*/
-select sum(o.ord_amount) as TOTAL_ORDER_AMOUNT , 
-case when c.cus_gender = 'M' then 'Male'
-when c.cus_gender = 'F' then 'Female'
-else 'NA' end as CUSTOMER_GENDER
-from 
-`order` as o join customer as c on c.cus_id = o.cus_id
-where c.cus_gender = 'M';
 
-/* 11) Display all the Customers left outer join with the orders.*/
 
-select * from customer c left  join `order` as o on c.cus_id = o.cus_id;
-
-/* 12) Create a stored procedure to display the Rating for a Supplier if any along with the
+/*  Create a stored procedure to display the Rating for a Supplier if any along with the
 Verdict on that rating if any like if rating >4 then “Genuine Supplier” if rating >2 “Average
 Supplier” else “Supplier should not be considered”.*/
 
